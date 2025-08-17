@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONTACT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+/* Header */
+header {
+  background-color: #000;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo { 
+  color: #00ff99; 
+  font-weight: 700; 
+  font-size: 24px; /* Desktop besar */
+}
+
+nav a {
+  color: #00ff99;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 800;
+  font-size: 16px; /* Desktop besar */
+  transition: color 0.3s;
+}
+
+nav a:hover { color: white; }
+
+.contact-section {
+  padding: 40px 5%;
+  text-align: center;
+}
+
+.contact-section h2 { font-size: 30px; color: #00ff99; margin-bottom: 20px; }
+
+.contact-section p {
+  font-size: 16px;
+  color: #ccc;
+  margin: 6px 0;
+}
+
+.contact-section a { color: #00ff99; text-decoration: none; }
+.contact-section a:hover { text-decoration: underline; }
+
+.contact-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  background-color: #00ff99;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 10px;
+}
+
+.contact-form button:hover {
+  background-color: #00cc77;
+  transform: scale(1.05);
+}
+
+.comments {
+  margin-top: 40px;
+  text-align: left;
+  max-width: 100%;
+}
+
+.comment {
+  background-color: #111;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  color: #fff;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.comment h4 { margin: 0 0 5px 0; color: #00ff99; font-size: 16px; }
+.comment p { margin: 0 0 5px 0; color: #ccc; font-size: 14px; }
+
+.like-btn, .delete-btn {
+  position: absolute;
+  bottom: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.2s;
+}
+
+.like-btn { right: 50px; color: #ff4d4d; }
+.like-btn.liked { transform: scale(1.2); }
+
+.delete-btn { right: 15px; color: #999; }
+.delete-btn:hover { color: #ff4d4d; }
+
+.contact-info { margin-top: 80px; text-align: center; }
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* ✅ Responsive Mobile */
+@media (max-width: 768px) {
+  header { 
+    padding: 10px 15px; 
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo { font-size: 18px; }
+  nav { margin-top: 8px; }
+  nav a { 
+    margin: 0 6px; 
+    font-size: 14px; 
+  }
+
+@media (max-width: 480px) {
+  .contact-section { padding: 30px 5%; }
+  .contact-form input, .contact-form textarea { font-size: 14px; }
+  .contact-form button { font-size: 14px; padding: 10px 15px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TERRA VISIO.</div>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="Map.html">Map</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Profile.html">About</a>
+      <a href="Contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="contact-section">
+
+ <!-- Judul Form -->
+  <h2 style="color:#00ff99; font-size:28px; margin-bottom:10px;">💬 Kirim Pesan & Masukan</h2>
+
+  <!-- Form Collab -->
+  <form class="contact-form" id="contactForm">
+    <input type="text" id="name" placeholder="Nama" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <textarea id="message" rows="5" placeholder="Tulis saran dan masukan" required></textarea>
+    <button type="submit">Kirim</button>
+  </form>
+
+  <!-- Komentar -->
+  <div class="comments" id="comments">
+    <h3>Komentar:</h3>
+  </div>
+
+  <!-- Info Kontak di bawah komentar -->
+  <div class="contact-info">
+    <h2><i class="fas fa-address-card"></i> Contact</h2>
+    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:terravisio@gmail.com">terravisio@gmail.com</a></p>
+    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/6281353295955" target="_blank">+62 81-3532-95955</a></p>
+    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/terra_visio" target="_blank">@terra_visio</a></p>
+  </div>
+
+</section>
+
+<script>
+const form = document.getElementById('contactForm');
+const commentsDiv = document.getElementById('comments');
+
+let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+let likedComments = JSON.parse(localStorage.getItem('likedComments')) || {};
+
+function renderComments() {
+  commentsDiv.innerHTML = '<h3>Komentar:</h3>';
+  savedComments.forEach((c,index)=>{
+    const commentEl = document.createElement('div');
+    commentEl.classList.add('comment');
+    commentEl.innerHTML = `
+      <h4>${c.name} (${c.email})</h4>
+      <p>${c.message}</p>
+      <button class="like-btn"><i class="fas fa-heart"></i> <span class="like-count">${c.likes}</span></button>
+      <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    `;
+
+    const likeBtn = commentEl.querySelector('.like-btn');
+    const likeCount = commentEl.querySelector('.like-count');
+    const deleteBtn = commentEl.querySelector('.delete-btn');
+
+    if(likedComments[index]) likeBtn.classList.add('liked');
+
+    likeBtn.addEventListener('click', ()=>{
+      if(likedComments[index]) return;
+      savedComments[index].likes++;
+      likeCount.textContent = savedComments[index].likes;
+      likedComments[index] = true;
+      localStorage.setItem('comments', JSON.stringify(savedComments));
+      localStorage.setItem('likedComments', JSON.stringify(likedComments));
+      likeBtn.classList.add('liked');
+    });
+
+    deleteBtn.addEventListener('click', ()=>{
+      savedComments.splice(index,1);
+      delete likedComments[index];
+      localStorage.setItem('comments', JSON.stringify(savedComments));
+      localStorage.setItem('likedComments', JSON.stringify(likedComments));
+      renderComments();
+    });
+
+    commentsDiv.appendChild(commentEl);
+  });
+}
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  savedComments.push({name,email,message,likes:0});
+  localStorage.setItem('comments',JSON.stringify(savedComments));
+  renderComments();
+  form.reset();
+});
+
+renderComments();
+</script>
+
+</body>
+</html>

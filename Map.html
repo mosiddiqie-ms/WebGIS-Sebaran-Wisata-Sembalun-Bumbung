@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>MAP-WISATA SEMBALUN BUMBUNG</title>
+
+  <!-- Leaflet & Plugins (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.css"/>
+  <script src="https://unpkg.com/leaflet.fullscreen@2.4.0/Control.FullScreen.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css"/>
+  <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <!-- Icons -->
+  <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet"/>
+
+  <!-- EasyButton -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.css">
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.js"></script>
+
+  <!-- Leaflet Routing Machine -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+  <!-- My CSS -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="Map.html">Map</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Profile.html">About</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+    <div class="nav-right"></div>
+  </nav>
+
+  <!-- Title badge -->
+  <div class="map-title"><b>WISATA SEMBALUN BUMBUNG</b></div>
+
+  <!-- Side panel -->
+  <!-- Panel -->
+  <div class="panel">
+    <div class="panel-header" onclick="togglePanel()">
+      <h3>Sumber Data</h3>
+      <span class="toggle-btn" id="toggleIcon">▲</span>
+    </div>
+    <div class="panel-body hidden" id="panelBody">
+      <ul>
+        <li>Data Rupa Bumi Digital Indonesia - BIG.</li>
+        <li>Data Open Street Map.</li>
+        <li>Data Sebaran Wisata - Survey Lapangan.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Legend -->
+ <!-- Legend -->
+  <div class="legend" id="legend">
+    <div class="legend-header" onclick="toggleLegend()">
+      <h4 style="margin:0; cursor:pointer;">
+        Legend <span id="legend-toggle">▲</span>
+      </h4>
+    </div>
+
+    <div class="legend-content" id="legend-content" style="display:none;">
+      <!-- Point -->
+      <div class="row">
+        <img src="aset/Icon1.png" class="legend-icon"> Kantor Desa
+      </div>
+      <div class="row">
+        <img src="aset/Icon2.png" class="legend-icon"> Sebaran Wisata
+      </div>
+
+      <!-- Polyline -->
+      <div class="row"><span class="swatch-line" style="background:#FF073A"></span> Jalan</div>
+      <div class="row"><span class="swatch-line" style="background:#1E90FF"></span> Sungai</div>
+
+      <!-- Polygon -->
+      <div class="row"><span class="swatch-line" style="background:#00FF7F"></span> Batas Desa</div>
+      <div class="row"><span class="swatch-line" style="background:#FFD700"></span> Batas Dusun</div>
+      <div class="row">Penggunaan Lahan</div>
+    </div>
+  </div>
+
+  <script>
+  function toggleLegend() {
+    let content = document.getElementById("legend-content");
+    let toggleIcon = document.getElementById("legend-toggle");
+
+    if (content.style.display === "none") {
+      content.style.display = "block";
+      toggleIcon.innerHTML = "▼";
+    } else {
+      content.style.display = "none";
+      toggleIcon.innerHTML = "▲";
+    }
+  }
+  </script>
+
+  <!-- Floating Routing -->
+  <div id="routingBox" class="floating-box">
+    <button class="close-btn" onclick="document.getElementById('routingBox').style.display='none'">✖</button>
+    <div id="routingContent">
+      <!-- Nanti isi otomatis dari Leaflet Routing Machine -->
+    </div>
+  </div>
+  <!-- My JS -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+

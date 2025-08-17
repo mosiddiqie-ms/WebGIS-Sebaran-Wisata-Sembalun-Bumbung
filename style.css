@@ -1,0 +1,244 @@
+:root {
+  --accent:#00ff99;
+  --bg:#0a0a0a;
+  --panel:#131313;
+  --text:#e7e7e7;
+}
+
+* { box-sizing:border-box; margin:0; padding:0 }
+body, html { height:100% }
+
+/* ✅ Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
+  border-bottom: 1px solid #111;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar a {
+  color: #00ff99;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 15px;
+  margin: 0 16px;
+  transition: color 0.25s ease;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+/* Map layout */
+#map { position:absolute; top:56px; left:0; right:0; bottom:0; }
+
+/* Title badge */
+.map-title {
+  position:absolute; top:72px; left:16px; z-index:600;
+  background:rgba(19,19,19,.85); color:var(--text);
+  backdrop-filter: blur(6px); padding:10px 14px;
+  border-radius:10px; border:1px solid rgba(255,255,255,.08);
+  font:600 14px/1.3 Poppins,system-ui;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+.map-title b{color:var(--accent)}
+
+/* Legend */
+.legend {
+  position: absolute; bottom: 40px; right: 14px; z-index: 600;
+  background: rgba(19, 19, 19, 0.9); color: #ddd;
+  border-radius: 12px; padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 180px;
+  font: 500 13px/1.4 Poppins, system-ui;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.legend h4 { font-size: 10px; margin-bottom: 8px; color: #fff; }
+.legend .row {
+  display: flex; align-items: center; gap: 10px; margin: 6px 0;
+}
+/* 🔹 Toggle ikon ▲ ▼ */
+#legend-toggle {
+  font-size: 12px;  /* ukuran ikon bisa beda dari judul */
+  margin-left: 70px;
+  color: #fff;   /* kasih warna biar stand out */
+}
+.toggle-btn { font-size: 12px; color: #fff; cursor: pointer; margin-left: 1px; user-select: none; }
+.legend-icon { width:20px; margin-right:5px; vertical-align:middle; }
+.swatch { width: 18px; height: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,.25); }
+.swatch-line { width: 30px; height: 4px; border-radius: 2px; }
+.swatch-point { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); }
+
+/* Animasi smooth */
+.legend-content { transition: all 0.3s ease-in-out; }
+
+/* Side panel */
+.panel {
+  position:absolute; bottom:40px; left:16px; z-index:600;
+  display: inline-block;
+  background:rgba(19,19,19,.85); color:#eaeaea;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:6px 10px;
+  backdrop-filter: blur(6px); font:500 9px/1.6 Poppins,system-ui;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);
+  white-space: nowrap;
+}
+.panel-header { display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+.panel-header h3 { font-size:10px; color:#fff; margin:0; }
+.toggle-btn { font-size: 12px; color: #fff; cursor: pointer; margin-left: 1px; user-select: none; }
+.panel-body { margin-top:0px; transition:max-height 0.3s ease, opacity 0.3s ease; overflow:hidden; white-space: normal; }
+.panel-body.hidden { max-height:0; opacity:0; padding:0; }
+.panel ul { padding-left: 4px; margin: 6px 0; list-style-type: disc; list-style-position: inside; }
+.panel li { margin-bottom: 4px; line-height: 1.5; }
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+  background: rgba(19,19,19,.92);
+  color: var(--text);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+  padding: 6px;
+}
+.leaflet-popup-content {
+  font:500 13px/1.45 Poppins,system-ui;
+  margin: 6px 10px;
+}
+.leaflet-popup-content h4 {
+  margin:.2rem 0 .3rem;
+  font-size:14px;
+  color: var(--accent);
+}
+.leaflet-popup-tip {
+  background: rgba(19,19,19,.92);
+}
+.leaflet-control-container .leaflet-top.leaflet-left { margin-top:70px }
+
+/* 🌍 Routing Panel */
+.routing-panel-custom { 
+  margin-top: 2px; 
+  max-width: 260px; 
+}
+
+/* 📱 Responsive Tablet & HP */
+@media (max-width: 300px) {
+  .routing-panel-custom {
+    position: fixed !important;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 92%;
+    width: auto;
+    z-index: 9999;
+    background: #fff; /* default putih bawaan */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    padding: 8px;
+  }
+
+  /* Geser control biar nggak tabrakan */
+  .leaflet-top.leaflet-left { 
+    top: 12px; 
+    left: 12px; 
+  }
+}
+
+/* 🎛 Semua tombol kontrol (default bawaan) */
+.leaflet-control {
+  border: none; /* hapus border custom */
+  border-radius: 4px !important; /* default simple */
+}
+.leaflet-control a,
+.leaflet-control button,
+.leaflet-control-layers-toggle {
+  color: #000 !important; /* default icon warna */
+  border-radius: 4px !important;
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px;
+  transition: 0.25s ease;
+}
+
+/* Hover effect */
+.leaflet-control a:hover,
+.leaflet-control button:hover,
+.leaflet-control-layers-toggle:hover {
+  background: #f0f0f0 !important;
+}
+
+/* 🔎 Geocoder */
+.leaflet-control-geocoder {
+  font-family: system-ui, sans-serif;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.leaflet-control-geocoder input {
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+  color: #000 !important;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.leaflet-control-geocoder input::placeholder {
+  color: #777; 
+  font-size: 13px;
+}
+
+/* 📏 Scale */
+.leaflet-control-scale {
+  border: none !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: system-ui, sans-serif;
+  color: #000 !important;
+}
+
+/* Responsive */
+@media (max-width:768px) {
+  .map-title { font-size: 12px; padding: 8px 10px; }
+  .legend { font-size: 12px; min-width: 150px; }
+}
+
+/* ✅ Responsive Mobile */
+@media (max-width: 768px) {
+  .hero-content {
+    top: 40%;           /* turunin biar center */
+    padding-left: 3%;   /* lebih rapat ke pinggir */
+    max-width: 95%;
+    text-align: center; /* rata tengah di HP */
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;   /* lebih kecil di mobile */
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 0.6rem; /* paragraf ikut kecil */
+  }
+
+  .hero-btn {
+    font-size: 0.9rem;
+    padding: 10px 22px; /* tombol lebih kecil */
+  }
+
+  .navbar {
+    justify-content: center; /* biar menu nggak kepotong */
+    padding: 0 10px;
+  }
+
+  .navbar a {
+    margin: 0 8px;
+    font-size: 13px; /* kecilin font navbar */
+  }
+}
+
